@@ -9,8 +9,8 @@ import {
     Post,
     Res,
   } from '@nestjs/common';
-import { TeacherService } from '../service/teacher.service';
-import { CreateTeacherDto } from '../dto/create.teacher.dto';
+import { TeacherService } from './teacher.service';
+import { CreateTeacherDto } from './dto/create.teacher.dto';
 import { ApiTags } from '@nestjs/swagger';
   
   @Controller('teacher')
@@ -18,6 +18,19 @@ import { ApiTags } from '@nestjs/swagger';
   export class TeacherController {
     constructor(private readonly teacherService: TeacherService) {}
   
+    @Get()
+    async getStudents(@Res() response) {
+      try {
+        const teachers = await this.teacherService.getAll();
+        return response.status(HttpStatus.OK).json({
+          message: 'All teachers found successfully',
+          teachers,
+        });
+      } catch (err) {
+        return response.status(err.status).json(err.response);
+      }
+    }
+
     @Post()
     async createTeacher(
       @Res() response,

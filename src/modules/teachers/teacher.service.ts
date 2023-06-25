@@ -2,13 +2,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { ITeacher } from '../Interface/teacher.interface';
-import { CreateTeacherDto } from '../dto/create.teacher.dto';
+import { ITeacher } from './Interface/teacher.interface';
+import { CreateTeacherDto } from './dto/create.teacher.dto';
 
 @Injectable()
 export class TeacherService {
   constructor(@InjectModel('Teacher') private teacherModel: Model<ITeacher>) {}
 
+  async getAll(): Promise<ITeacher[]> {
+    const result = await this.teacherModel.find();
+    return result;
+  }
   async createTeacher(createTeacherDto: CreateTeacherDto): Promise<ITeacher> {
     const newTeacher = await new this.teacherModel(createTeacherDto);
     return newTeacher.save();

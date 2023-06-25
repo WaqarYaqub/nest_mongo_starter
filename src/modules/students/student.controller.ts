@@ -32,7 +32,7 @@ export class StudentController {
     @Body() createStudentDto: CreateStudentDto
   ) {
     try {
-      const newStudent = await this.studentService.createStudent(
+      const newStudent = await this.studentService.create(
         createStudentDto
       );
       return response.status(HttpStatus.CREATED).json({

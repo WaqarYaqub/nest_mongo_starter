@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './modules/auth/auth.module';
 import { TeacherModule } from './modules/teachers/teacher.module';
-import { TeacherSchema } from './modules/teachers/schema/teacher.schema';
+import { TeacherSchema } from './modules/teachers/teacher.schema';
 import { GradeModule } from './modules/grades/grade.module';
 import { StudentSchema } from './modules/students/student.schema';
 import { StudentModule } from './modules/students/student.module';

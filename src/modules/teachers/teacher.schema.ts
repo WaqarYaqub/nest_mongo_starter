@@ -14,9 +14,9 @@ export class Teacher {
   gender: string;
   @Prop()
   password: string;
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Student', required:true }] })
-  student: [Student]
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Grade', required:true }] })
-  grade: [Grade]
+  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Student', required:true }] })
+  // student: [Student]
+  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Grade', required:true }] })
+  // grade: [Grade]
 }
 export const TeacherSchema = SchemaFactory.createForClass(Teacher);

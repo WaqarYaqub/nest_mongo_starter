@@ -2,7 +2,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Grade } from 'src/modules/grades/schema/grade.schema';
-import { Teacher } from 'src/modules/teachers/schema/teacher.schema';
+import { Teacher } from '../teachers/teacher.schema';
 
 @Schema()
 export class Student {

@@ -11,7 +11,7 @@ import { IStudent } from './interface/student.interface';
 export class StudentService {
   constructor(@InjectModel('Student') private studentModel: Model<IStudent>) {}
 
-  async createStudent(CreateStudentDto: CreateStudentDto): Promise<IStudent> {
+  async create(CreateStudentDto: CreateStudentDto): Promise<IStudent> {
     const newStudent = await new this.studentModel(CreateStudentDto);
     return newStudent.save();
   }
@@ -35,7 +35,7 @@ export class StudentService {
   }
 
   async getAllStudent(): Promise<IStudent[]> {
-    const studentData = await this.studentModel.find();
+    const studentData = await this.studentModel.find().populate('teacher');
     if (!studentData || studentData.length == 0) {
       throw new NotFoundException(' Student Data Not Found. ');
     }
